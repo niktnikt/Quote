@@ -17,7 +17,8 @@ const Quote = require('./models/quote-model');
 const User = require('./models/user-model');
 const flash = require('connect-flash');
 
-mongoose.connect('mongodb://localhost/quote');
+// mongoose.connect('mongodb://localhost/quote');
+mongoose.connect('mongodb://nikt:randompassword1@ds211592.mlab.com:11592/quote')
 
 const app = express();
 
