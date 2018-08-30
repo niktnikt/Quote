@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/quote-preview-style.css">
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+	<!-- moment for quote-preview-script.js -->
+	<script src="/moment.js"></script>
+
+	<!-- google icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- font awesome icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+	<!-- Jquery -->
+	<script
+  	src="https://code.jquery.com/jquery-3.3.1.js"
+  	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  	crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<% if(user){ %>
+		<% include partials/log-header.ejs %>
+	<% }else{ %>
+		<% include partials/header.ejs %>
+	<% } %>
+
+	<div id="quote-div">
+		<h1 id="quote"><%= quote.quote %></h1>
+		<a id="author" href="/users/profile/<%= author.id %>">-<%= author.username %></a>
+	</div>
+
+	<% if(user){ %> <!-- only if the user is logged in - allow him to heart - attach ajax to btns-->
+		<% if(quoteHearted === true){ %>
+			<button class="heart heart-quote" id="hearted-heart">&#10084</button>
+		<% }else{ %>
+			<button class="heart heart-quote" id="not-hearted-heart">&#10084</button>
+		<% } %>
+	<% }else{ %> <!-- if the user isn't logged in - don't allow him to heart but still show the heart - don't attach ajax to btns -->
+		<button id="logged-out-heart" class="heart-quote" onclick="youHaveToBeLoggedIn()">&#10084</button>
+		<p id="please-log-in"></p> <!-- javascript will add content here -->
+	<% } %>
+	<p id="please-log-in-comment"></p> <!-- javascript will add content here -->
+	
+	<aside id="stats-aside">
+		<div id="stats">
+			<ul>
+				<li id="heart-number"><span>&#10084</span> <%= quote.meta.hearts %> </li>
+				<li id='comment-number' class="far fa-comments"> <span class="aside-text"><%= quote.comments.length %></span></li>
+				<li class="fas fa-calendar-alt"> <span class="aside-text"><%= moment(quote.date).format('MMM Do YYYY') %></span></li>
+				<li class="fas fa-user"><a href="/users/profile/<%= author.id %>" class="aside-text"> <%= author.username %></a></li>
+				<li class="fas fa-tag"><span class="aside-text"><%= quote.category %></span></li>
+			</ul>
+		</div>
+		<div id="similar-quotes">
+			<h1 id="similar-quotes-heading">You might also enjoy:</h1>
+			<ul>
+				<% for(var i = 0; i < 5; i++){ %>
+					<li>
+						<% var string = suggestedQuotes[i].quote %>
+						<% if(string.length < 20){ %> 
+							<a href="/quote/<%= suggestedQuotes[i].id %>"> <%= string %> </a>
+						<% }else{ %>
+							<a href="/quote/<%= suggestedQuotes[i].id %>"> <%= string.substring(0,20) %>... </a>
+						<% } %>
+					</li>
+				<% } %>
+			</ul>
+		</div>
+	</aside>
+
+	<div id="submit-comment-div">
+		<textarea type="text"  id="comment-textarea" name="comment" placeholder="Please type your comment here..." maxlength="200"></textarea>
+		<div id="submit-comment-btns">
+			<button id="comment-submit">Submit</button>
+			<button id="comment-cancel" onclick="cancelComment()">Cancel</button>	
+		</div>
+	</div>
+
+	<div id="comment-sort">
+		<% if(query.sort === 'old' || query.sort === 'top' || query.sort === 'new'){ %>
+			<% if(query.sort === 'new'){ %>
+				<a class="sort-btn sort-btn-selected" id="sort-new" href="?sort=new">New</a>
+			<% }else{ %>
+				<a class="sort-btn" id="sort-new" href="?sort=new">New</a>
+			<% } %>
+			<% if(query.sort === 'top'){ %>
+				<a class="sort-btn sort-btn-selected" id="sort-top" href="?sort=top">Top</a>
+			<% }else{ %>
+				<a class="sort-btn" id="sort-top" href="?sort=top">Top</a>
+			<% } %>
+			<% if(query.sort === 'old'){ %>
+				<a class="sort-btn sort-btn-selected" id="sort-old" href="?sort=old">Old</a>
+			<% }else{ %>
+				<a class="sort-btn" id="sort-old" href="?sort=old">Old</a>
+			<% } %>
+		<% }else{ %>
+			<a class="sort-btn sort-btn-selected" id="sort-new" href="?sort=new">New</a>
+			<a class="sort-btn" id="sort-top" href="?sort=top">Top</a>
+			<a class="sort-btn" id="sort-old" href="?sort=old">Old</a>
+		<% } %>
+		
+	</div>
+
+	<div id="comment-div">
+		<ul id="comment-ul">
+			<% for(var i = 0; i < comments.length; i++){ %>
+				<li id="<%= comments[i].id %>">
+					<h1 class="comment-body"><%= comments[i].comment %></h1>	
+					<% if(user){ %>
+					<!-- check if comments were previously hearted by user -->
+						<% if(commentsHeartedByUser.indexOf(comments[i].id) > -1){ %>
+							<button class="heart-comment hearted-heart-comment comment-heart-css">&#10084</button>
+						<% }else{ %>
+							<button class="heart-comment not-hearted-heart-comment comment-heart-css">&#10084</button>
+						<% } %>	
+					<% }else{ %>
+						<button class="logged-out-heart-comment comment-heart-css" onclick="youHaveToBeLoggedIn()">&#10084</button>
+					<% } %>	
+					<h1 class="heart-number-comment"> <%= comments[i].meta.hearts %></h1>
+					<a href="/users/profile/<%= comments[i].author %>" class="comment-author"><%= comments[i].authorName %></a>
+					<% if(user){ %>
+						<!-- check if comment was submitted by user -->
+						<% if(commentsSubmittedByUser.indexOf(comments[i].id) > -1){ %>
+							<button class="fas fa-trash delete-comment"></button>
+						<% } %>	
+					<% } %>
+					<p id="comment-date"><%= moment(comments[i].date).fromNow() %></p>
+				</li>
+			<% } %>
+		</ul>
+
+		<!-- dsiplay the show more btn only when there are other comment to show -->
+		<% if(quote.comments.length > 10) { %>
+			<button id="show-more-btn">Show more</button>
+		<% } %>
+	</div>
+
+	<script type="text/javascript" src="/quote-preview-script.js"></script>
+</body>
+</html>

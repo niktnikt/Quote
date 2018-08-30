@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="/settings-feedback-style.css">
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+	<title></title>
+</head>
+<body>
+	<% if(user){ %>
+		<% include partials/log-header.ejs %>
+	<% }else{ %>
+		<% include partials/header.ejs %>
+	<% } %>
+
+	<aside id="settings-nav">
+		<ul>
+			<li>
+				<a href="/profile/settings">Main</a>
+			</li>
+			<li>
+				<a href="/profile/settings/preferences">Preferences</a>
+			</li>
+			<li>
+				<a href="/profile/settings/feedback">Feedback</a>
+			</li>
+		</ul>
+	</aside>
+
+	<form id="feedback-form" action="/profile/settings/feedback" method="POST">
+		<h1>Tell us what you think!</h1><br>
+
+		<% if(typeof error != 'undefined'){ %>
+			<p id="error"><%= error %></p>
+		<% } %>
+
+		<%if(typeof message != 'undefined'){ %>
+			<% if(message != ''){ %>
+				<p id="success"> <%=message %></p>
+			<% } %>
+		<% } %>
+
+		<label for="msg-title">Title:</label>
+		<p class="input-limit">Up to 30 characters are allowed</p>
+		<input id="msg-title" type="text" name="title" maxlength="30">
+
+		<label for="msg-body">Body:</label>
+		<p class="input-limit">Up to 300 characters are allowed</p>
+		<textarea id="msg-body" name="body" maxlength="300"></textarea>
+
+		<input type="submit" value="Save">
+	</form>
+
+</body>
+</html>

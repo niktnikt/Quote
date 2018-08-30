@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="index-style.css">
+	<title>Quote</title>
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet">
+</head>
+<body>
+	<% if(user){ %>
+	<% include partials/log-header.ejs %>
+	<% }else{ %>
+	<% include partials/header.ejs %>
+	<% } %>
+	<div id="main-div">
+		<h1 id="quote"><%= quote.quote %></h1>
+		<a id="check-out" href="/quote/<%= quote.id %>">Check it out!</a>
+	</div>
+	<div id="content">
+		random content
+	</div>
+</body>
+</html>

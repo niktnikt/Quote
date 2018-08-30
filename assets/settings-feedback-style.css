@@ -1,0 +1,95 @@
+*{
+	font-family: 'Montserrat', sans-serif;
+}
+/*styles for the aside settings nav*/
+#settings-nav{
+	/*background-color: red;*/
+	float: left;
+	width: 15%;
+	border-right: 1px solid black;
+}
+#settings-nav ul{
+	list-style-type: none;
+	padding: 0;
+	margin-left: 7%;
+}
+#settings-nav ul li{
+	margin-bottom: 10px;
+}
+/*styles for the form*/
+#feedback-form{
+	margin-left: 30%;
+	margin-top: 100px;
+}
+/*input and lable styles*/
+input[type = 'text'], textarea{
+	display: block;
+	margin-bottom: 10px;
+}
+input[type = 'text']{
+	width: 40%;
+	font-size: 20px;
+	padding: 10px;
+}
+label{
+	display: block;
+	margin-bottom: 10px;
+}
+.input-limit{
+	font-size: 10px;
+	font-weight: lighter;
+	color: gray;
+	margin-top: 0;
+}
+textarea{
+	resize: none;
+	width: 40%;
+	padding: 10px;
+	font-size: 20px;
+	height: 100px;
+}
+/*save btn style*/
+input[type = 'submit']{
+	border: none;
+	background-color: rgb(0, 121, 211);
+	padding: 7px;
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	font-size: 15px;
+	cursor: pointer;
+}
+/*styles for the feedback heading*/
+h1{
+	display: inline-block;
+	font-size: 20px;
+	margin-left: 10%;
+	font-weight: normal;
+	font-style: italic;
+	border-bottom: 1px solid red;
+}
+/*styles for success and error message*/
+#success{
+	display: inline-block;
+	background-color: #23c100;
+	padding: 10px;
+}
+#error{
+	display: inline-block;
+	background-color: #ff3f3f;
+	padding: 10px;
+}
+/*link styles*/
+a{
+	text-decoration: none;
+	color: black;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    cursor: pointer;
+    color: #33a8ff;
+}
+a:active {
+    color: black;
+}

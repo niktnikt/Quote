@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/settings-style.css">
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+	<!-- jquery -->
+	<script
+  	src="https://code.jquery.com/jquery-3.3.1.js"
+  	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  	crossorigin="anonymous"></script>
+</head>
+<body>
+	<% if(user){ %>
+		<% include partials/log-header.ejs %>
+	<% }else{ %>
+		<% include partials/header.ejs %>
+	<% } %>
+
+	<aside id="settings-nav">
+		<ul>
+			<li>
+				<a href="/profile/settings">Main</a>
+			</li>
+			<li>
+				<a href="/profile/settings/preferences">Preferences</a>
+			</li>
+			<li>
+				<a href="/profile/settings/feedback">Feedback</a>
+			</li>
+		</ul>
+	</aside>
+
+	<form id="main-settings-form" enctype="multipart/form-data" action="/profile/settings" method="POST">
+		<div id="img-edit-div">
+			<img src="<%= user.thumbnail %>">
+			<!-- check if there is an error message -> if image is > 5MB -->
+			<div id="img-btn-div">
+				<% if(typeof error != 'undefined'){ %>
+					<h1 id="error-msg"><%= error[0] %></h1>
+				<% } %>
+				<br>
+				<button onclick="deleteProfileImage()" type="button" id="img-delete-btn">Delete</button>
+				<label id="file-upload-lable" for="file-input">Upload</label>
+				<input onchange="getFileName()" id="file-input" type="file" name="thumbnail">
+			</div>
+		</div>
+		<label for="change-username">Change username</label>
+		<p class="settings-info">Up to 30 characters are allowed</p>
+		<input id="change-username" type="text" name="username" maxlength="30" placeholder="<%= user.username %>">
+		<input id="submit-btn" type="submit" value="Save">
+	</form>
+<script type="text/javascript" src="/settings-script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/profile-preview-styles.css">
+	<!-- icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<body>
+	<% if(user){ %>
+		<% include partials/log-header.ejs %>
+	<% }else{ %>
+		<% include partials/header.ejs %>
+	<% } %>
+	<div style="background-color: <%= profile.preferences.profileBackground %>"  id="background-description">
+		<h1 id="profile-description" style="color: <%= profile.preferences.profileFontColor %> %>"> <%= profile.profileDescription %></h1>
+	</div>
+	<div id="profile-info-main">
+		<img id="profile-thumbnail" src="<%= profile.thumbnail %>">
+		<h1 id="profile-name" "><%= profile.username %></h1>
+	</div>
+	<div id="meta">
+		<ul>
+			<li id="total-hearts">
+				<span class="fas fa-heart"></span>
+				<span class='icon-text'><%= profile.meta.totalHearts %></span>
+			</li>
+			<li id="total-quotes">
+				<span class="fas fa-quote-right"></span>
+				<span class='icon-text'><%= profile.quotes.length %></span>
+			</li>
+			<li id="total-comments"><span class="fas fa-comments"></span>
+				<span class='icon-text'><%= profile.comments.length %></span>
+			</li>
+			<li id="birthday">
+				<span class="fas fa-birthday-cake"></span>
+				<span class='icon-text'><%= moment(profile.birthday).format('MMM Do YYYY') %></span>
+			</li>
+		</ul>
+	</div>
+	<aside id="similar-authors">
+		<ul>
+			<% if(suggestedUsers){ %>
+				<% for(var i = 0; i < 5; i++){ %>
+					<li>
+						<a href="/users/profile/<%= suggestedUsers[i].id %>">
+							<img class="suggested-user-image" src="<%= suggestedUsers[i].thumbnail %>">
+							<%= suggestedUsers[i].username %>
+						</a>
+					</li>
+				<% } %>
+			<% }else{ %>
+				<h1>No results</h1>
+			<% } %>
+		</ul>
+	</aside>
+	<div id="posted-quotes">
+		<% if(quotes.length > 0){ %>
+			<ul>
+				<% for(var i = 0; i < quotes.length; i++){ %>
+					<a href="/quote/<%= quotes[i].id %>"><li><%= quotes[i].quote %></li></a>
+				<% } %>
+			</ul>
+		<% }else{ %>
+			<h1>looks like the user didn't post anything yet</h1>
+		<% } %>
+	</div>
+</html>

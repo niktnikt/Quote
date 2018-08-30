@@ -1,0 +1,90 @@
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+/*styles for the aside settings nav*/
+#settings-nav{
+	float: left;
+	width: 15%;
+	border-right: 1px solid black;
+}
+#settings-nav ul{
+	list-style-type: none;
+	padding: 0;
+	margin-left: 7%;
+}
+#settings-nav ul li{
+	margin-bottom: 10px;
+}
+/*styles for form*/
+#preferences-settings-form{
+	margin-left: 30%;
+	margin-top: 100px;
+}
+#preferences-settings-form input, #preferences-settings-form label, #preferences-settings-form img{
+	margin-bottom: 20px;
+}
+/*styles for username change*/
+#change-description{
+	display: block;
+	margin-top: 10px;
+	width: 40%;
+	font-size: 20px;
+	padding: 10px;
+}
+.settings-info{
+	font-size: 10px;
+	font-weight: lighter;
+	color: gray;
+}
+/*save btn styles*/
+#submit-btn{
+	border: none;
+	background-color: rgb(0, 121, 211);
+	padding: 7px;
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+/*styles for color div*/
+.colors{
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+/*styles for color span*/
+label span{
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+/*styles for color span when checked*/
+input:checked + .radio-lable span{
+	border: 3px solid #3075e5;
+}
+/*hide the radio btns display only the lables*/
+input[type = 'radio']{
+	display: none;
+}
+/*chnage the cursor to pointer when hovering over a certain color*/
+.radio-lable{
+	cursor: pointer;
+}
+/*link styles*/
+a{
+	text-decoration: none;
+	color: black;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    cursor: pointer;
+    color: #33a8ff;
+}
+a:active {
+    color: black;
+}

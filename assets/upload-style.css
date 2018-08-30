@@ -1,0 +1,71 @@
+*{
+	font-family: 'Montserrat', sans-serif;
+}
+body{
+	margin: 0;
+	height: 100%;
+	padding: 0;
+}
+#upload-form{
+	margin-top: 100px
+}
+form{
+	width: 25%;
+	margin-left: 37.5%;
+}
+form label,	input[type = 'submit'] {
+	display: block;
+	width: 20%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Dosis', sans-serif;
+	font-size: 30px;
+	color: blue;
+}
+form label{
+	margin-bottom: 20px;
+}
+form input[type = 'text']{
+	width: 100%;
+	height: 50px;
+	margin-bottom: 20px;
+	font-size: 30px;
+	text-transform: uppercase;
+	font-family: 'Archivo', sans-serif;
+	text-align: center;
+}
+form input[type = 'submit']{
+	width: auto;
+	font-size: 30px;
+	border: 2px solid black;
+	border-radius: 10%;
+	background-color: white;
+	transition: background-color 1s linear;
+}
+form input[type = 'submit']:hover{
+	box-shadow: 2px 2px 10px grey;
+	cursor: pointer;
+	background-color: #a3ffa9;
+}
+form textarea{
+	display: block;
+	width: 200%;
+	height: 100px;
+	font-size: 15px;
+	resize: none;
+	margin-bottom: 20px;
+	margin-left: -50%;
+	font-family: 'Quicksand', sans-serif;
+}
+form h1{
+	font-size: 15px;
+	color: #7a7a7a;
+}
+/*styles for success message*/
+#success-message{
+	display: inline-block;
+	background-color: #23c100;
+	padding: 10px;
+	font-size: 15px;
+	margin-top: 0;
+}

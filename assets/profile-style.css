@@ -1,0 +1,225 @@
+*{
+	font-family: 'Montserrat', sans-serif;
+}
+body{
+	background-color: #e6ecf0;
+}
+ul{
+	list-style-type: none;
+}
+/*styles for settings icon*/
+#settings{
+	width: 30px;
+	position: absolute;
+	left: 95%;
+}
+/*styles fro profile image and username*/
+#profile-main-info{
+	text-align: center;
+	margin-top:100px;
+}
+#username{
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 20px;
+	position: relative;
+	top: -30px;
+}
+#username-profile:hover{
+	color: #33a8ff;
+}
+/*styles for profile image*/
+#profile-image{
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	border: 2px solid white;
+	background-color: #ddd;
+	border-radius: 50%;
+}
+
+/* styles for sort buttons */
+#comment-sort{
+	margin-left: 68%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.sort-btn{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	margin-left: 1%;
+	position: relative;
+}
+.sort-btn:hover{
+	cursor: pointer;
+	color: #000;
+}
+.sort-btn::after{
+	content: "";
+ 	position: absolute;
+ 	width: 100%;
+ 	height: 2px;
+ 	bottom: 0;
+ 	left: 0;
+  	background-color: red;
+  	visibility: hidden;
+	-webkit-transform: scaleX(0);
+	transform: scaleX(0);
+  	-webkit-transition: all 0.3s ease-in-out 0s;
+  	transition: all 0.3s ease-in-out 0s;
+}
+.sort-btn:hover::after{
+	visibility: visible;
+	-webkit-transform: scaleX(1);
+	transform: scaleX(1);
+}
+.sort-btn-selected::before{
+	content: "";
+ 	position: absolute;
+ 	width: 100%;
+ 	height: 2px;
+ 	bottom: 0;
+ 	left: 0;
+  	background-color: red;
+  	visibility: visible;
+}
+
+/*styles for the main content*/
+#main{
+	width: 56%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+#main ul{
+	margin: 0;
+}
+#main li{
+	position: relative;
+}
+#uploaded-quotes{
+	list-style: none;
+	padding: 0;
+}
+#show-more-btn{
+	display: block;
+	cursor: pointer;
+	border: 2px solid black;
+	outline: none;
+	background-color: #f44336;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: white;
+	padding: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+/*delete comment style*/
+.fa-trash{
+	outline: none;
+	background-color: white;
+	border: none;
+	font-size: 15px;
+	position: absolute;
+	top: 10px;
+	left: 97%;
+	padding: 0;
+}
+.fa-trash:hover{
+	cursor: pointer;
+	color: #33a8ff;
+}
+/* date style */
+#date{
+	position: absolute;
+	color: rgb(200, 200, 200);
+	top: 0;
+	margin-left: 1%;
+	margin-top: 0;
+	margin-bottom: 0;
+	top: 10px;
+}
+.quote-content{
+	text-align: center;
+	background-color: rgba(134, 161, 158, 0.4);
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+.category{
+	border-bottom: 1px dashed rgba(200, 200, 200);
+	margin: 0;
+	font-weight: bold;
+	font-size: 20px;
+	color: #999;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.quote{
+	font-size: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    color: black;
+}
+a:active {
+    color: black;
+}
+.quote-content p{
+	margin: 0;
+}
+.quote-content:hover{
+	background-color: rgba(250, 250, 250);
+}
+/*styles for aside*/
+#recent-comments{
+	width: 20%;
+	float: left;
+	background-color: white;
+	margin-left: 1%;
+}
+#recent-comments ul{
+	padding: 0;
+}
+#recent-comments ul li{
+	padding-left: 5%;
+}
+.commentAuthorImage{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: relative;
+	top: 7px;
+}
+/*styles for stats aside*/
+#stats{
+	width: 20%;
+	float: right;
+	background-color: white;
+	margin-right: 1%;
+}
+#heart-number span{
+	color: red;
+}
+#stats ul{
+	list-style-type: none;
+	padding: 0;
+	margin-left: 10%;
+}
+#stats ul li{
+	font-size: 25px;
+	display: block;
+	margin-bottom: 10px;
+}
+.aside-text{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: normal;
+}

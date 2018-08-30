@@ -1,0 +1,137 @@
+body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #e6ecf0;
+	font-family: 'Montserrat', sans-serif;
+}
+/*styles for profile thumbnail*/
+#profile-thumbnail{
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	border: 2px solid white;
+	background-color: #ddd;
+	border-radius: 50%;
+	margin-left: 100px;
+}
+/*styles for profile description*/
+#background-description{
+	height: 300px;
+	overflow: hidden;
+}
+#profile-description{
+	margin-top: 100px;
+	text-align: center;
+}
+/*styles for profile name*/
+#profile-name{
+	display: inline-block;
+	text-align: center;
+	margin-top: 50px;
+	color: white;
+	margin: 0;
+	position: relative;
+	bottom: 35px;
+	margin-left: 10px;
+}
+#profile-info-main{
+	margin-top: 100px;
+	position: absolute;
+	top: 100px;
+}
+/*icon styles*/
+/*styles for total hearts*/
+.fa-heart{
+	margin-right: 10px;
+}
+/*styles for join date*/
+.fa-birthday-cake{
+	margin-right: 10px;
+}
+/*styles for total comments*/
+.fa-comments{
+	margin-right: 10px;
+}
+/*styles for total quotes*/
+.fa-quote-right{
+	margin-right: 10px;
+}
+/*styles fro icon text*/
+.icon-text{
+	color: #555;
+}
+/*styles for met div*/
+#meta ul{
+	list-style-type: none;
+	display: table;
+	width: 100%;
+	margin-left: 2%;
+	margin-bottom: 10px;
+}
+#meta ul li{
+	display: inline-block;
+	font-size: 25px;
+	width: 24.7%;
+	display: table-cell;
+}
+#meta{
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	padding: 0;
+}
+/*styles for posted quotes*/
+#posted-quotes{
+	width: 70%;
+	margin-left: 2.5%;
+}
+#posted-quotes ul{
+	background-color: white;
+	margin-top: 10px;
+	list-style-type: none;
+	padding: 0;
+}
+#posted-quotes ul li{
+	border-bottom: 1px solid #aaa;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+/*similar authors (aside) style*/
+#similar-authors{
+	float: right;
+	background-color: white;
+	width: 24%;
+	margin-right: 2.5%;
+}
+#similar-authors ul li{
+	margin-bottom: 10px;
+}
+#similar-authors ul{
+	list-style-type: none;
+	padding-left: 5%;
+}
+.suggested-user-image{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: relative;
+	top: 7px;
+}
+/*link styles*/
+a{
+	text-decoration: none;
+	color: black;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    cursor: pointer;
+    color: #33a8ff;
+}
+a:active {
+    color: black;
+}

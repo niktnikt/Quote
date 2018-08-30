@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	
+	<title>Upload</title>
+	<link rel="stylesheet" type="text/css" href="/upload-style.css">
+</head>
+<body>
+	<% if(user){ %>
+		<% include partials/log-header.ejs %>
+	<% }else{ %>
+		<% include partials/header.ejs %>
+	<% } %>
+
+	<form id="upload-form" method="POST" action="/upload/">
+		<label for="category">Category</label>
+		<h1>Please enter one word that best describes your quote:</h1>
+		<input type="text" name="category">
+		<label for="quote">Quote</label>
+		<h1>Up to 200 characters are allowed</h1>
+		<textarea maxlength="200" type="text" name="quote" placeholder="Please type your quote here..."></textarea>
+
+		<% if(message != ''){ %>
+			<p id="success-message"><%= message %></p>
+		<% } %>
+
+		<input type="submit" value="submit">
+	</form>
+</body>
+</html>

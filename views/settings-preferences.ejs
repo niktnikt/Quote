@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/settings-preferences-style.css">
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+	<!-- jquery -->
+	<script
+  	src="https://code.jquery.com/jquery-3.3.1.js"
+  	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  	crossorigin="anonymous"></script>
+</head>
+<body>
+	<% if(user){ %>
+		<% include partials/log-header.ejs %>
+	<% }else{ %>
+		<% include partials/header.ejs %>
+	<% } %>
+
+	<aside id="settings-nav">
+		<ul>
+			<li>
+				<a href="/profile/settings">Main</a>
+			</li>
+			<li>
+				<a href="/profile/settings/preferences">Preferences</a>
+			</li>
+			<li>
+				<a href="/profile/settings/feedback">Feedback</a>
+			</li>
+		</ul>
+	</aside>
+
+	<form id="preferences-settings-form" action="/profile/settings/preferences" method="POST">
+			
+		<label for="change-description">Change profile description</label>
+		<p class="settings-info">Up to 100 characters are allowed</p>
+		<input id="change-description" type="text" name="profileDescription" maxlength="100" placeholder="<%= user.profileDescription %>">
+		<label>Change profile background color</label><br>
+		<!-- check at which position is the current user color -->
+		<% var position = backgroundColors.indexOf(user.preferences.profileBackground) %>
+		<!-- delete that color from the array - it always has to be displayed first -->
+		<% backgroundColors.splice(position , 1) %>
+
+		<div class="colors">
+			<input id="radio-btn1" type="radio" name="profileBackground" value="<%= user.preferences.profileBackground %>" checked>
+			<label class="radio-lable" for="radio-btn1">
+				<span style="background-color: <%= user.preferences.profileBackground %>"></span>
+			</label>
+
+			<input id="radio-btn2" type="radio" name="profileBackground" value="<%= backgroundColors[0] %>">
+			<label class="radio-lable" for="radio-btn2">
+				<span style="background-color: <%= backgroundColors[0] %>"></span>
+			</label>
+
+
+			<input id="radio-btn3" type="radio" name="profileBackground" value="<%= backgroundColors[1] %>">
+			<label class="radio-lable" for="radio-btn3">
+				<span style="background-color: <%= backgroundColors[1] %>"></span>
+			</label><br>
+		</div>
+
+		<!-- check at which position is the current user font color -->
+		<% var position = fontColors.indexOf(user.preferences.profileFontColor) %>
+		<!-- delete that color from the array - it always has to be displayed first -->
+		<% fontColors.splice(position , 1) %>
+
+		<label>Change profile description color</label><br>
+	
+		<div class="colors">
+			<input id="radio-btn4" type="radio" name="profileFontColor" value="<%= user.preferences.profileFontColor %>" checked>
+			<label class="radio-lable" for="radio-btn4">
+				<span style="background-color: <%= user.preferences.profileFontColor %>"></span>
+			</label>
+
+			<input id="radio-btn5" type="radio" name="profileFontColor" value="<%= fontColors[0] %>">	<label class="radio-lable" for="radio-btn5">
+				<span style="background-color: <%= fontColors[0] %>"></span>
+			</label>
+
+			<input id="radio-btn6" type="radio" name="profileFontColor" value="<%= fontColors[1] %>">
+			<label class="radio-lable" for="radio-btn6" style="color: <%= fontColors[1] %>">
+				<span style="background-color: <%= fontColors[1] %>"></span>
+			</label><br>
+		</div>
+
+		<input id="submit-btn" type="submit" value="Save">
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+body{
+	margin: 0;
+	height: 100%;
+	padding: 0;
+}
+#main-div{
+	margin: 0;
+	height: 100vh;
+	background-color: black;
+	text-align: center;
+	overflow: hidden;
+}
+#quote{
+	color: white;
+	margin-top: 200px;
+	text-decoration: none;
+	font-family: 'IM Fell English SC', serif;
+}
+#content{
+	height: 100vh;
+	background-color: red;
+}
+#check-out{
+	font-family: 'Montserrat', sans-serif;
+	display: inline-block;
+	margin-top: 50px;
+	background-color: rgba(100, 100, 100, 0);
+	border: 3px solid white;
+	color: white;
+	padding: 15px;
+	font-size: 15px;
+	text-decoration: none;
+}
+#check-out:hover{
+	background-color: rgba(100, 100, 100, 0.5);
+}

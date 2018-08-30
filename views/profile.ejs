@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!-- jquery -->
+	<script
+  	src="https://code.jquery.com/jquery-3.3.1.js"
+  	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	  crossorigin="anonymous"></script>
+	
+	<!-- moment -->
+	<script src="/moment.js"></script>
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+	<!-- incons - font awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+	<title>Profile</title>
+	<link rel="stylesheet" type="text/css" href="/profile-style.css">
+</head>
+<body>
+	<a href="/profile/settings/"><img id="settings" src="/settings-icon.png"></a>
+	<% include partials/log-header %>
+	<div id="profile-main-info">
+		<a id="username-profile" href="/users/profile/<%= user.id %>">
+			<img id="profile-image" src="<%= user.thumbnail %>">
+			<h1 id="username"><%= user.username %></h1>
+		</a>	
+	</div>
+	<aside id="recent-comments">
+		<h1>Recent comments:</h1>
+		<ul>
+			<% for(var i = 0; i < otherUsersComments.length; i++){ %>
+				<li>
+					<img class="commentAuthorImage" src="<%= otherUsersComments[i].user.thumbnail %>">
+					<%= otherUsersComments[i].comment %>	
+				</li>
+			<% } %>
+		</ul>
+	</aside>
+	<aside id="stats">
+			<ul>
+				<li id="heart-number"><span>&#10084</span> <%= user.meta.totalHearts %> </li>
+				<li class="far fa-comments"> <span class="aside-text"><%= user.comments.length %></span></li>
+				<li class="fas fa-quote-right" id="quote-number"> <span class="aside-text"> <%= user.quotes.length %> </span></li>
+				<li class="fas fa-calendar-alt"> <span class="aside-text"><%= moment(user.birthday).format('MMM Do YYYY') %></span></li>
+			</ul>
+	</aside>
+
+	<div id="comment-sort">
+		<% if(query.sort === 'old' || query.sort === 'top' || query.sort === 'new'){ %>
+			<% if(query.sort === 'new'){ %>
+				<a class="sort-btn sort-btn-selected" id="sort-new" href="?sort=new">New</a>
+			<% }else{ %>
+				<a class="sort-btn" id="sort-new" href="?sort=new">New</a>
+			<% } %>
+			<% if(query.sort === 'top'){ %>
+				<a class="sort-btn sort-btn-selected" id="sort-top" href="?sort=top">Top</a>
+			<% }else{ %>
+				<a class="sort-btn" id="sort-top" href="?sort=top">Top</a>
+			<% } %>
+			<% if(query.sort === 'old'){ %>
+				<a class="sort-btn sort-btn-selected" id="sort-old" href="?sort=old">Old</a>
+			<% }else{ %>
+				<a class="sort-btn" id="sort-old" href="?sort=old">Old</a>
+			<% } %>
+		<% }else{ %>
+			<a class="sort-btn sort-btn-selected" id="sort-new" href="?sort=new">New</a>
+			<a class="sort-btn" id="sort-top" href="?sort=top">Top</a>
+			<a class="sort-btn" id="sort-old" href="?sort=old">Old</a>
+		<% } %>
+		
+	</div>
+
+	<div id="main">
+		<ul id="uploaded-quotes">
+			<% for(var i = 0; i < quote.length; i++){ %>
+			<li id="<%= quote[i].id %>">
+				<a href="/quote/<%= quote[i].id %>">
+					<div class="quote-content">
+						<h1 class="category"> <%= quote[i].category %></h1>
+						<p class="quote"> <%= quote[i].quote %> </p>
+					</div>
+				</a>
+				<button class="fas fa-trash"></button>
+				<p id="date"><%= moment(quote[i].date).fromNow() %></p>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+	<div style="clear: both;"></div>
+
+	<!-- dsiplay the show more btn only when there are other comment to show -->
+	<% if(user.quotes.length > 10) { %>
+		<button id="show-more-btn">Show more</button>
+	<% } %>
+
+	<script type="text/javascript" src="/profile-script.js"></script>
+</body>
+</html>

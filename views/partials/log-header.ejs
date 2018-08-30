@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<title></title>
+	<style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	#nav ul li a{
+		padding: 0;
+		margin: 0;
+		color: white;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-family: 'Josefin Sans', sans-serif;
+		font-size: 18px;
+	}
+	#nav{
+		height: 60px;
+		text-align: right;
+		padding: 0;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		background-color: rgba(186, 61, 61, 0.8);
+		z-index: 1;
+	}
+	#nav ul{
+		margin: 0;
+		list-style-type: none;
+		margin-right: 30px;
+	}
+	#nav ul li{
+		position: relative;
+		top: 7px;
+		display: inline-block;
+		margin-left: 20px;
+	}
+	#nav ul img{
+		width: 30px;
+		height: 30px;
+		position: relative;
+		top: 10px;
+		border-radius: 50%;
+	}
+</style>
+</head>
+<body>
+	<nav id="nav">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/auth/logout">Logout</a></li>
+			<li><a href="/upload">Upload</a></li>
+			<li><a href="/profile"><img id="profile-img" src= '<%= user.thumbnail %>'></a></li>	
+		</ul>
+	</nav>
+</body>
+</html>
