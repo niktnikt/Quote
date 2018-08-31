@@ -16,10 +16,7 @@ body{
 	text-decoration: none;
 	font-family: 'IM Fell English SC', serif;
 }
-#content{
-	height: 100vh;
-	background-color: red;
-}
+
 #check-out{
 	font-family: 'Montserrat', sans-serif;
 	display: inline-block;
@@ -33,4 +30,5 @@ body{
 }
 #check-out:hover{
 	background-color: rgba(100, 100, 100, 0.5);
+	cursor: pointer;
 }

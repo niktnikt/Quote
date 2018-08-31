@@ -28,6 +28,9 @@
 		<% if(message != ''){ %>
 			<p id="success-message"><%= message %></p>
 		<% } %>
+		<% if(errMessage != ''){ %>
+			<p id="error-message"> <%= errMessage %> </p>
+		<% } %>
 
 		<input type="submit" value="submit">
 	</form>

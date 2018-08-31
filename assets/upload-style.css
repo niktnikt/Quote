@@ -69,3 +69,11 @@ form h1{
 	font-size: 15px;
 	margin-top: 0;
 }
+/* styles for err message */
+#error-message{
+	display: inline-block;
+	background-color: #ff1133;
+	padding: 10px;
+	font-size: 15px;
+	margin-top: 0;
+}

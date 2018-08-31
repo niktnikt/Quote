@@ -6,14 +6,24 @@ const User = require('../models/user-model');
 const mongoose = require('mongoose');
 const authCheck = require('../config/auth-check.js');
 
-router.get('/', authCheck, function(req, res){
+function checkIfUserCanUpload(req, res, next){
+	if(req.user){
+		next();
+	}else{
+		req.flash('error', 'In order to upload quotes, please log in');
+		res.redirect('back');
+	}
+}
+
+router.get('/', function(req, res){
 	res.render('upload.ejs', {
 		user: req.user,
-		message: req.flash('success')
+		message: req.flash('success'),
+		errMessage: req.flash('error')
 	});
 });
 
-router.post('/', urlencodedParser, function(req, res){
+router.post('/', checkIfUserCanUpload, urlencodedParser, function(req, res){
 	//create new quote in db
 	new Quote({
 		category: req.body.category.toUpperCase(),
