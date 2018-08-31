@@ -38,12 +38,12 @@
 
 	<% if(user){ %> <!-- only if the user is logged in - allow him to heart - attach ajax to btns-->
 		<% if(quoteHearted === true){ %>
-			<button class="heart heart-quote" id="hearted-heart">&#10084</button>
+			<button class="fas fa-heart heart heart-quote" id="hearted-heart"></button>
 		<% }else{ %>
-			<button class="heart heart-quote" id="not-hearted-heart">&#10084</button>
+			<button class="fas fa-heart heart heart-quote" id="not-hearted-heart"></button>
 		<% } %>
 	<% }else{ %> <!-- if the user isn't logged in - don't allow him to heart but still show the heart - don't attach ajax to btns -->
-		<button id="logged-out-heart" class="heart-quote" onclick="youHaveToBeLoggedIn()">&#10084</button>
+		<button id="logged-out-heart" class="fas fa-heart heart-quote" onclick="youHaveToBeLoggedIn()"></button>
 		<p id="please-log-in"></p> <!-- javascript will add content here -->
 	<% } %>
 	<p id="please-log-in-comment"></p> <!-- javascript will add content here -->

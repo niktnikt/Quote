@@ -15,7 +15,7 @@ body{
 #quote{
 	display: inline-block;
 	color: white;
-	margin-top: 90px;
+	margin-top: 20vh;
 	font-family: 'Gaegu', cursive;
 	font-size: 30px;
 	margin-bottom: 10px;
@@ -250,7 +250,7 @@ textarea{
 
 /*styles for quote heart btn*/
 .heart-quote{
-	display: block;
+	display: block !important;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 60px;
@@ -258,7 +258,6 @@ textarea{
 	background: none;
 	padding: 0;
 	outline: none;
-	margin-top: -10px;
 }
 #not-hearted-heart{
 	color: gray;
